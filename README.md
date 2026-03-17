@@ -1,19 +1,6 @@
-<!-- INTERACTIVE PROFILE BANNER -->
 <div align="center">
-
-## 🚀 [✨ View My Interactive Profile](https://razin1325.github.io)
-
-> *Click above for animated version with projects & tech stack!*
-
+  <img src="https://raw.githubusercontent.com/razin1325/razin1325/main/razin-banner.svg" width="100%" alt="Razin Ibn Asad Molla"/>
 </div>
-
----
-
-# Hi there 👋, I'm Razin Ibn Asad Molla
-
-### 🧑‍💻 About Me  
-I'm a Computer Science & Engineering undergraduate with a passion for building clean, performant web applications.  
-I combine frontend elegance and backend logic to solve real-world problems.
 
 ---
 
@@ -38,9 +25,7 @@ I combine frontend elegance and backend logic to solve real-world problems.
 
 ## 📊 GitHub Metrics & Stats
 
-<!-- GitHub Readme stats -->
 [![Razin's GitHub stats](https://github-readme-stats.vercel.app/api?username=razin1325&show_icons=true&theme=radical)](https://github.com/razin1325)
-<!-- GitHub top languages -->
 [![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=razin1325&layout=compact)](https://github.com/razin1325)
 
 ---
