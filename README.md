@@ -9,11 +9,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
 <style>
   *{margin:0;padding:0;box-sizing:border-box;}
-  :root{--bg:#0a0a0f;--accent:#00f5a0;--accent2:#7b2fff;--accent3:#ff6b35;--text:#e8e8f0;--dim:#555570;}
+  :root{--bg:#0a0a0f;--accent:#00f5a0;--accent2:#7b2fff;--accent3:#ff6b35;--text:#e8e8f0;--dim:#888899;}
   body{background:var(--bg);color:var(--text);font-family:'Space Mono',monospace;overflow-x:hidden;min-height:100vh;}
   canvas#bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;opacity:.4;}
   .wrapper{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:40px 24px 60px;}
 
+  /* HERO */
   .hero{text-align:center;padding:60px 0 40px;}
   .hero-tag{font-size:11px;letter-spacing:6px;color:var(--accent);opacity:0;text-transform:uppercase;margin-bottom:16px;}
   .hero-name{font-family:'Syne',sans-serif;font-size:clamp(42px,8vw,96px);font-weight:800;line-height:.95;opacity:0;
@@ -31,56 +32,67 @@
   .badge:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,245,160,.3);}
 
   .divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--dim),transparent);margin:40px 0;opacity:0;}
-  .section-label{font-size:10px;letter-spacing:5px;color:var(--dim);text-transform:uppercase;margin-bottom:20px;opacity:0;}
+  .section-label{font-size:10px;letter-spacing:5px;color:var(--accent);text-transform:uppercase;margin-bottom:20px;opacity:0;font-weight:700;}
 
-  .tech-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:2px;opacity:0;}
-  .tech-card{background:#111118;border:1px solid #1e1e2e;padding:16px 12px;text-align:center;transition:all .3s;cursor:default;position:relative;overflow:hidden;}
-  .tech-card::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(0,245,160,.06),transparent);transition:.5s;}
+  /* TECH GRID */
+  .tech-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;opacity:0;}
+  @media(max-width:500px){.tech-grid{grid-template-columns:repeat(2,1fr);}}
+  .tech-card{
+    background:#16161f;
+    border:1px solid #2a2a3e;
+    padding:20px 12px;
+    text-align:center;
+    transition:all .3s;
+    cursor:default;
+    position:relative;
+    overflow:hidden;
+  }
+  .tech-card::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(0,245,160,.08),transparent);transition:.5s;}
   .tech-card:hover::before{left:100%;}
-  .tech-card:hover{border-color:var(--accent);transform:translateY(-3px);}
-  .tech-icon{font-size:22px;margin-bottom:6px;}
-  .tech-name{font-size:9px;letter-spacing:2px;color:var(--dim);text-transform:uppercase;}
+  .tech-card:hover{border-color:var(--accent);transform:translateY(-3px);background:#1a1a28;}
+  .tech-icon{font-size:26px;margin-bottom:8px;display:block;}
+  .tech-name{font-size:10px;letter-spacing:2px;color:#ccd;text-transform:uppercase;}
 
-  .stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:2px;opacity:0;}
-  .stat-box{background:#111118;border:1px solid #1e1e2e;padding:24px 16px;text-align:center;}
+  /* STATS */
+  .stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;opacity:0;}
+  .stat-box{background:#16161f;border:1px solid #2a2a3e;padding:24px 16px;text-align:center;}
   .stat-num{font-family:'Syne',sans-serif;font-size:36px;font-weight:800;line-height:1;
     background:linear-gradient(135deg,var(--accent),var(--accent2));
     -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
   .stat-label{font-size:9px;letter-spacing:3px;color:var(--dim);text-transform:uppercase;margin-top:6px;}
 
-  /* PROJECT CARDS */
+  /* PROJECTS */
   .projects-grid{display:grid;grid-template-columns:1fr;gap:3px;opacity:0;}
-  .project-card{background:#111118;border:1px solid #1e1e2e;padding:28px;position:relative;overflow:hidden;transition:all .3s;cursor:pointer;}
-  .project-card:hover{border-color:rgba(0,245,160,.4);box-shadow:0 0 40px rgba(0,245,160,.06);transform:translateY(-2px);}
-  .project-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;transition:height .3s;}
-  .card-acumen::before{background:var(--accent);}
+  .project-card{background:#16161f;border:1px solid #2a2a3e;padding:28px;position:relative;overflow:hidden;transition:all .3s;cursor:pointer;}
+  .project-card:hover{transform:translateY(-2px);}
+  .card-obroyland:hover{border-color:rgba(123,47,255,.5);box-shadow:0 0 40px rgba(123,47,255,.08);}
+  .card-ac:hover{border-color:rgba(255,107,53,.5);box-shadow:0 0 40px rgba(255,107,53,.08);}
+  .project-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;}
   .card-obroyland::before{background:var(--accent2);}
   .card-ac::before{background:var(--accent3);}
-
   .proj-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px;gap:12px;}
   .proj-meta{display:flex;align-items:center;gap:10px;}
   .proj-num{font-size:10px;letter-spacing:3px;color:var(--dim);}
   .proj-tag{font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;border:1px solid;}
-  .tag-green{border-color:var(--accent);color:var(--accent);}
   .tag-purple{border-color:var(--accent2);color:var(--accent2);}
   .tag-orange{border-color:var(--accent3);color:var(--accent3);}
-
   .project-title{font-family:'Syne',sans-serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:8px;}
   .project-desc{font-size:11px;color:var(--dim);line-height:1.9;margin-bottom:18px;}
   .proj-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
   .proj-stack{display:flex;gap:6px;flex-wrap:wrap;}
-  .stack-pill{font-size:8px;letter-spacing:1px;color:var(--dim);border:1px solid #2a2a3e;padding:2px 8px;}
-  .project-link{font-size:10px;letter-spacing:3px;color:var(--accent);text-decoration:none;text-transform:uppercase;display:flex;align-items:center;gap:6px;transition:.2s;}
+  .stack-pill{font-size:8px;letter-spacing:1px;color:#aab;border:1px solid #2a2a3e;padding:2px 8px;}
+  .project-link{font-size:10px;letter-spacing:3px;text-decoration:none;text-transform:uppercase;display:flex;align-items:center;gap:6px;transition:.2s;font-weight:700;}
   .project-link:hover{gap:10px;}
   .card-obroyland .project-link{color:var(--accent2);}
   .card-ac .project-link{color:var(--accent3);}
 
+  /* LINKS */
   .links-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:40px;opacity:0;}
-  .social-link{display:flex;align-items:center;gap:8px;padding:10px 20px;border:1px solid #1e1e2e;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:var(--dim);transition:all .3s;}
+  .social-link{display:flex;align-items:center;gap:8px;padding:10px 20px;border:1px solid #2a2a3e;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:var(--dim);transition:all .3s;}
   .social-link:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px);}
 
   .scanline{position:fixed;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.3;z-index:10;pointer-events:none;}
-  .corner{position:fixed;width:40px;height:40px;opacity:.3;z-index:5;}
+  .corner{position:fixed;width:40px;height:40px;opacity:.4;z-index:5;}
   .corner.tl{top:16px;left:16px;border-top:1px solid var(--accent);border-left:1px solid var(--accent);}
   .corner.tr{top:16px;right:16px;border-top:1px solid var(--accent);border-right:1px solid var(--accent);}
   .corner.bl{bottom:16px;left:16px;border-bottom:1px solid var(--accent);border-left:1px solid var(--accent);}
@@ -113,14 +125,14 @@
   <div class="divider" id="div1"></div>
   <div class="section-label" id="lbl1">⬡ Tech Stack</div>
   <div class="tech-grid" id="techgrid">
-    <div class="tech-card"><div class="tech-icon">⚛️</div><div class="tech-name">React</div></div>
-    <div class="tech-card"><div class="tech-icon">▲</div><div class="tech-name">Next.js</div></div>
-    <div class="tech-card"><div class="tech-icon">🔷</div><div class="tech-name">TypeScript</div></div>
-    <div class="tech-card"><div class="tech-icon">🌊</div><div class="tech-name">Tailwind</div></div>
-    <div class="tech-card"><div class="tech-icon">🟢</div><div class="tech-name">Supabase</div></div>
-    <div class="tech-card"><div class="tech-icon">🌀</div><div class="tech-name">Three.js</div></div>
-    <div class="tech-card"><div class="tech-icon">💚</div><div class="tech-name">Node.js</div></div>
-    <div class="tech-card"><div class="tech-icon">🐍</div><div class="tech-name">Python</div></div>
+    <div class="tech-card"><span class="tech-icon">⚛️</span><div class="tech-name">React</div></div>
+    <div class="tech-card"><span class="tech-icon">▲</span><div class="tech-name">Next.js</div></div>
+    <div class="tech-card"><span class="tech-icon">🔷</span><div class="tech-name">TypeScript</div></div>
+    <div class="tech-card"><span class="tech-icon">🌊</span><div class="tech-name">Tailwind</div></div>
+    <div class="tech-card"><span class="tech-icon">🟢</span><div class="tech-name">Supabase</div></div>
+    <div class="tech-card"><span class="tech-icon">🌀</span><div class="tech-name">Three.js</div></div>
+    <div class="tech-card"><span class="tech-icon">💚</span><div class="tech-name">Node.js</div></div>
+    <div class="tech-card"><span class="tech-icon">🐍</span><div class="tech-name">Python</div></div>
   </div>
 
   <div class="divider" id="div2" style="margin-top:40px;"></div>
@@ -133,68 +145,38 @@
 
   <div class="divider" id="div3" style="margin-top:40px;"></div>
   <div class="section-label" id="lbl3">⬡ Featured Projects</div>
-
   <div class="projects-grid" id="projgrid">
 
-    <!-- ObroyLand -->
     <div class="project-card card-obroyland" onclick="window.open('https://obroyland.xyz','_blank')">
       <div class="proj-top">
-        <div class="proj-meta">
-          <span class="proj-num">01</span>
-          <span class="proj-tag tag-purple">Real Estate · Full Stack</span>
-        </div>
+        <div class="proj-meta"><span class="proj-num">01</span><span class="proj-tag tag-purple">Real Estate · Full Stack</span></div>
         <span style="font-size:10px;letter-spacing:2px;color:#3a3a5e;">2025</span>
       </div>
       <div class="project-title">ObroyLand</div>
-      <div class="project-desc">Modern full-stack real estate platform connecting buyers, sellers & property owners. Features AI-powered property descriptions, interactive Leaflet maps, role-based dashboards for users/owners/admins, real-time search filters & live analytics.</div>
+      <div class="project-desc">Modern full-stack real estate platform connecting buyers, sellers & property owners. AI-powered property descriptions via Genkit, interactive Leaflet maps, role-based dashboards for users/owners/admins, real-time search & live analytics.</div>
       <div class="proj-footer">
         <div class="proj-stack">
           <span class="stack-pill">Next.js</span><span class="stack-pill">TypeScript</span>
           <span class="stack-pill">Supabase</span><span class="stack-pill">Genkit AI</span>
           <span class="stack-pill">Leaflet</span><span class="stack-pill">ShadCN</span>
         </div>
-        <a class="project-link card-obroyland" href="https://obroyland.xyz" target="_blank" onclick="e=>e.stopPropagation()">View Live →</a>
+        <a class="project-link" href="https://obroyland.xyz" target="_blank">View Live →</a>
       </div>
     </div>
 
-    <!-- Acumen Haven -->
-    <div class="project-card card-acumen" onclick="window.open('https://acumen-haven.vercel.app','_blank')">
-      <div class="proj-top">
-        <div class="proj-meta">
-          <span class="proj-num">02</span>
-          <span class="proj-tag tag-green">Nonprofit · Web Dev</span>
-        </div>
-        <span style="font-size:10px;letter-spacing:2px;color:#3a3a5e;">2025</span>
-      </div>
-      <div class="project-title">Acumen Haven</div>
-      <div class="project-desc">Climate action nonprofit website for a registered Arizona, USA organization. CMS-powered via Supabase, responsive across all devices, SEO-optimized with fast load times. Covers 5 core climate pillars — Transport, Education, Tree Planting, Waste Management & Competitions.</div>
-      <div class="proj-footer">
-        <div class="proj-stack">
-          <span class="stack-pill">Next.js</span><span class="stack-pill">TypeScript</span>
-          <span class="stack-pill">Tailwind CSS</span><span class="stack-pill">Supabase</span>
-          <span class="stack-pill">Vercel</span>
-        </div>
-        <a class="project-link" href="https://acumen-haven.vercel.app" target="_blank" onclick="e=>e.stopPropagation()">View Live →</a>
-      </div>
-    </div>
-
-    <!-- AC Servicing Doha -->
     <div class="project-card card-ac" onclick="window.open('https://acservicingdoha.vercel.app','_blank')">
       <div class="proj-top">
-        <div class="proj-meta">
-          <span class="proj-num">03</span>
-          <span class="proj-tag tag-orange">Service Business · Qatar</span>
-        </div>
+        <div class="proj-meta"><span class="proj-num">02</span><span class="proj-tag tag-orange">Service Business · Qatar</span></div>
         <span style="font-size:10px;letter-spacing:2px;color:#3a3a5e;">2026</span>
       </div>
       <div class="project-title">AC Servicing Doha</div>
-      <div class="project-desc">Professional AC repair & maintenance service platform for Doha, Qatar. Features booking system, Google Maps integration, 50+ verified reviews, 24/7 support contact, and multi-service showcase for AC repair, installation, gas refill & plumbing.</div>
+      <div class="project-desc">Professional AC repair & maintenance platform for Doha, Qatar. Features online booking, Google Maps integration, 50+ verified customer reviews, 24/7 support contact, and full service showcase — AC repair, installation, gas refill & plumbing.</div>
       <div class="proj-footer">
         <div class="proj-stack">
           <span class="stack-pill">Next.js</span><span class="stack-pill">Tailwind CSS</span>
           <span class="stack-pill">Vercel</span><span class="stack-pill">Google Maps</span>
         </div>
-        <a class="project-link" href="https://acservicingdoha.vercel.app" target="_blank" onclick="e=>e.stopPropagation()">View Live →</a>
+        <a class="project-link" href="https://acservicingdoha.vercel.app" target="_blank">View Live →</a>
       </div>
     </div>
 
@@ -212,13 +194,12 @@
 <script>
 gsap.registerPlugin(TextPlugin);
 
-/* PARTICLES */
 const canvas=document.getElementById('bg');
 const ctx=canvas.getContext('2d');
 let W,H,particles=[];
 function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
 resize(); window.addEventListener('resize',resize);
-for(let i=0;i<80;i++) particles.push({x:Math.random()*2000,y:Math.random()*1200,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,r:Math.random()*1.5+.3,o:Math.random()*.6+.1});
+for(let i=0;i<80;i++) particles.push({x:Math.random()*2000,y:Math.random()*1200,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,r:Math.random()*1.5+.3,o:Math.random()*.5+.2});
 function drawParticles(){
   ctx.clearRect(0,0,W,H);
   particles.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
@@ -226,13 +207,15 @@ function drawParticles(){
   for(let i=0;i<particles.length;i++) for(let j=i+1;j<particles.length;j++){
     const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,d=Math.sqrt(dx*dx+dy*dy);
     if(d<120){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);
-      ctx.strokeStyle=`rgba(0,245,160,${.15*(1-d/120)})`;ctx.lineWidth=.5;ctx.stroke();}
+      ctx.strokeStyle=`rgba(0,245,160,${.2*(1-d/120)})`;ctx.lineWidth=.5;ctx.stroke();}
   }
   requestAnimationFrame(drawParticles);
 }
 drawParticles();
 
 gsap.to('#scanline',{top:'100%',duration:3,repeat:-1,ease:'none',delay:.5});
+gsap.set('.project-card',{opacity:0,y:30});
+gsap.set('.tech-card',{opacity:0,y:15});
 
 const tl=gsap.timeline({defaults:{ease:'power3.out'}});
 tl.to('#tag',{opacity:1,duration:.6,delay:.2})
@@ -243,18 +226,17 @@ tl.to('#tag',{opacity:1,duration:.6,delay:.2})
   .to('#div1',{opacity:1,duration:.4})
   .to('#lbl1',{opacity:1,duration:.3})
   .to('#techgrid',{opacity:1,duration:.4})
+  .to('.tech-card',{opacity:1,y:0,stagger:.08,duration:.4,ease:'power2.out'})
   .to('#div2',{opacity:1,duration:.3})
   .to('#lbl2',{opacity:1,duration:.3})
   .to('#statsrow',{opacity:1,duration:.4})
   .to('#div3',{opacity:1,duration:.3})
   .to('#lbl3',{opacity:1,duration:.3})
   .to('#projgrid',{opacity:1,duration:.3})
-  .to('.project-card',{opacity:1,y:0,stagger:.15,duration:.5,ease:'power2.out'})
+  .to('.project-card',{opacity:1,y:0,stagger:.2,duration:.6,ease:'power2.out'})
   .to('#div4',{opacity:1,duration:.3})
   .to('#linksrow',{opacity:1,duration:.4});
 
-gsap.set('.project-card',{opacity:0,y:30});
-gsap.from('.tech-card',{opacity:0,y:20,stagger:.07,duration:.5,delay:1.8,ease:'power2.out'});
 gsap.from('.badge',{scale:0,stagger:.05,duration:.4,delay:1.4,ease:'back.out(2)'});
 
 const phrases=["Web Developer & CSE Student","Next.js · TypeScript · Supabase","Researcher & Open Source Builder","Building Scalable Web Systems 🚀"];
@@ -270,7 +252,7 @@ function typePhrase(){
 setTimeout(typePhrase,1600);
 
 function countUp(id,target,suffix=''){
-  gsap.to({v:0},{v:target,duration:2,delay:2.2,ease:'power2.out',onUpdate:function(){
+  gsap.to({v:0},{v:target,duration:2,delay:2.5,ease:'power2.out',onUpdate:function(){
     document.getElementById(id).textContent=Math.round(this.targets()[0].v)+(suffix);
   }});
 }
