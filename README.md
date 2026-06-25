@@ -27,7 +27,7 @@
 [![Razin's GitHub stats](https://github-readme-stats.vercel.app/api?username=razin1325&show_icons=true&theme=radical&include_all_commits=true&count_private=true&cache_seconds=1)](https://github.com/razin1325)
 [![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=razin1325&layout=compact&theme=radical&cache_seconds=1)](https://github.com/razin1325)
 
-![Contributions](https://img.shields.io/badge/Contributions-1%2C795-brightgreen?logo=github)
+[![GitHub Streak](https://streak-stats.demolab.com?user=razin1325&theme=radical)](https://github.com/razin1325)
 ---
 
 ## 🔗 Connect with Me
