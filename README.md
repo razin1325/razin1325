@@ -25,25 +25,27 @@
 
 ## 📊 GitHub Metrics & Stats
 
-[![Razin's GitHub stats](https://github-readme-stats.vercel.app/api?username=razin1325&show_icons=true&theme=radical)](https://github.com/razin1325)
-[![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=razin1325&layout=compact)](https://github.com/razin1325)
+[![Razin's GitHub stats](https://github-readme-stats.vercel.app/api?username=razin1325&show_icons=true&theme=radical&include_all_commits=true&count_private=true)](https://github.com/razin1325)
+[![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=razin1325&layout=compact&theme=radical)](https://github.com/razin1325)
+
+![Contributions](https://img.shields.io/badge/Contributions-1%2C433-brightgreen?logo=github)
 
 ---
 
 ## 🔗 Connect with Me
 
-[![Facebook](https://img.shields.io/badge/Facebook-Follow-blue?logo=facebook)](https://www.facebook.com/Razin.Ibn.asad)  
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?logo=linkedin)](https://www.linkedin.com/in/razin-ibn-asad/)  
-[![Instagram](https://img.shields.io/badge/Instagram-Follow-pink?logo=instagram)](https://www.instagram.com/razin_ibn_asad/)  
+[![Facebook](https://img.shields.io/badge/Facebook-Follow-blue?logo=facebook)](https://www.facebook.com/Razin.Ibn.asad)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?logo=linkedin)](https://www.linkedin.com/in/razin-ibn-asad/)
+[![Instagram](https://img.shields.io/badge/Instagram-Follow-pink?logo=instagram)](https://www.instagram.com/razin_ibn_asad/)
 [![ORCID](https://img.shields.io/badge/ORCID-Profile-green?logo=orcid)](https://orcid.org/my-orcid?orcid=0009-0005-2822-377X)
 
 ---
 
 ## 🎯 Currently
 
-- 💡 Building better Next.js patterns & Supabase integrations  
-- 📖 Learning deeper AI / ML models  
-- 🚀 Open to frontend, backend, or full-stack development roles  
+- 💡 Building better Next.js patterns & Supabase integrations
+- 📖 Learning deeper AI / ML models
+- 🚀 Open to frontend, backend, or full-stack development roles
 
 ---
 
